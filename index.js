@@ -4,5 +4,6 @@
 
 import {AppRegistry} from 'react-native';
  import {name as appName} from './app.json';
- import DonorList from './screens/mainappscreens/donorlist';
-AppRegistry.registerComponent(appName, () => DonorList);
+import Home from './screens/Home';
+import Firstpage from './screens/mainappscreens/Firstpage';
+AppRegistry.registerComponent(appName, () => Firstpage);

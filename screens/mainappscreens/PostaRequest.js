@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import Slider from '@react-native-community/slider';
+import { bloodGroups } from './options';
 
-const bloodGroups = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
 const genders = ['Male', 'Female', 'Other'];
 
 const Donate = () => {

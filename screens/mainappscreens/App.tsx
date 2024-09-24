@@ -1,9 +1,11 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Login from './Login'; // Assuming your file is named Login.js
-import Signup from './Signup'; // Assuming your file is named Signup.js
-
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import Login from '../login';
+import Signup from '../signup';
+import App from '../firstpage';
+import Donate from '../postarequest'; // Import the PostARequest component
+import Firstpage from './Firstpage';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -13,12 +15,22 @@ export default function App() {
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{ headerShown: false }} // Hides the header for the login screen
+          options={{headerShown: false}} //mathi aaune header hide garnes
         />
         <Stack.Screen
           name="Signup"
           component={Signup}
-          options={{ headerShown: false }} // Hides the header for the signup screen
+          options={{headerShown: false}} //mathi aaune header hide garne
+        />
+        <Stack.Screen
+          name="firstpage"
+          component={Firstpage}
+          options={{headerShown: false}} //mathi aaune header hide garne
+        />
+        <Stack.Screen
+          name="Donate"
+          component={Donate}
+          options={{headerShown: false}} //mathi aaune header hide garne
         />
       </Stack.Navigator>
     </NavigationContainer>

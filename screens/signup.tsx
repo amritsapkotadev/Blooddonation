@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
+
 const Signup = ({ navigation }) => {
   return (
       <View style={styles.signuppage}>
@@ -33,7 +34,7 @@ const Signup = ({ navigation }) => {
             accessibilityLabel="Password Input" />
         </View>
 
-        <TouchableOpacity style={styles.signupbutton}>
+        <TouchableOpacity style={styles.signupbutton}  onPress={navigation.navigate('firstpage.js')} >
           <Text style={styles.buttonText}>Signup</Text>
         </TouchableOpacity>
 
@@ -89,7 +90,7 @@ const Signup = ({ navigation }) => {
       marginBottom: 15,
       paddingLeft: 10,
       borderRadius: 5,
-      color: 'black',
+      color: 'white',
     },
     signupbutton: {
       backgroundColor: '#6200ee',

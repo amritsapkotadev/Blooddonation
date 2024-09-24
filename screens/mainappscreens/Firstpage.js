@@ -1,27 +1,19 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';
-
-const options = [
-  { id: '1', label: 'Find Donor' },
-  { id: '2', label: 'Donate Blood' },
-  { id: '3', label: 'Blood Bank' },
-  { id: '4', label: 'Support' },
-  { id: '5', label: 'Blood Request' },
-  { id: '6', label: 'More' },
-];
-
-const bloodSeekersData = [
-  { id: '1', name: 'Nisha Thapa', address: 'Kathmandu', details: 'Lorem ipsum dolor sit amet', bloodgroup: 'A+' },
-  { id: '2', name: 'Rajesh Gurung', address: 'Pokhara', details: 'Lorem ipsum dolor sit amet', bloodgroup: 'B-' },
-  { id: '3', name: 'Amrit Spakota', address: 'Kathmandu', details: 'Lorem ipsum dolor sit amet', bloodgroup: 'AB+' },
-  { id: '4', name: 'Rajesh Gaure', address: 'Pokhara', details: 'Lorem ipsum dolor sit amet', bloodgroup: 'O-' },
-];
-
-const App = () => {
+import { useNavigation } from '@react-navigation/native';
+import { bloodSeekersData, options } from './options';
+const Firstpage = ({navigation}) => {
   const [bloodSeekers] = useState(bloodSeekersData);
 
   const renderOption = ({ item }) => (
-    <TouchableOpacity style={styles.option}>
+    <TouchableOpacity 
+      style={styles.option}
+      onPress={() => {
+        if (item.id === '5') {
+          navigation.navigate('postarequest');
+        }
+      }}
+    >
       <Text style={styles.optionText}>{item.label}</Text>
     </TouchableOpacity>
   );
@@ -76,7 +68,7 @@ const App = () => {
   );
 };
 
-export default App;
+
 
 const styles = StyleSheet.create({
   container: {
@@ -189,3 +181,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 });
+
+export default Firstpage;

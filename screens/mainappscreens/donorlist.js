@@ -1,18 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, View, FlatList } from 'react-native';
-
-const donorsData = [
-  { id: '1', name: 'Ram Thapa', address: 'Chitwan', bloodGroup: 'A+' },
-  { id: '2', name: 'Anita Gaire', address: 'Butwal', bloodGroup: 'B-' },
-  { id: '3', name: 'Amrit Sapkota', address: 'Kathmandu', bloodGroup: 'O+' },
-  { id: '4', name: 'Sita Rai', address: 'Pokhara', bloodGroup: 'AB+' },
-  { id: '5', name: 'Ravi Kafle', address: 'Bhaktapur', bloodGroup: 'A-' },
-  { id: '6', name: 'Sushma Kc', address: 'Dharan', bloodGroup: 'B+' },
-  { id: '7', name: 'Suresh Malla', address: 'Dolakha', bloodGroup: 'O-' },
-  { id: '8', name: 'Puja Budha', address: 'Nepalgunj', bloodGroup: 'AB-' },
-  { id: '9', name: 'Nitesh Sharma', address: 'Indrapur', bloodGroup: 'A+' },
-  { id: '10', name: 'Kiran Pokharel', address: 'Morang', bloodGroup: 'B+' },
-];
+import { donorsData } from './options';
 
 const DonorList = () => {
   const [searchQuery, setSearchQuery] = useState('');
