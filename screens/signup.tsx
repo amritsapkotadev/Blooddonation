@@ -16,7 +16,6 @@ const Signup = ({ navigation }) => {
   const [password, setPassword] = useState('');
 
   const signup = async () => {
-    // Validate the phone number
     if (!isValidPhoneNumber(phoneNumber, 'NP')) {
       Alert.alert('Invalid phone number format.');
       return;
