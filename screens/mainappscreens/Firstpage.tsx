@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';
- import { bloodSeekersData, options } from '../mainappscreens/options';
+ import { bloodSeekersData, options } from './options';
 const Firstpage = ({navigation}) => {
   const [bloodSeekers] = useState(bloodSeekersData);
 
