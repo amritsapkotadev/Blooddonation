@@ -5,7 +5,7 @@ export const options = [
   { id: '4', label: 'Support' },
   { id: '5', label: 'Blood Request' },
   { id: '6', label: 'More' },
-];export const bloodSeekersData = [
+]; export const bloodSeekersData = [
   { id: '1', name: 'Nisha Thapa', address: 'Kathmandu', details: 'Lorem ipsum dolor sit amet', bloodgroup: 'A+' },
   { id: '2', name: 'Rajesh Gurung', address: 'Pokhara', details: 'Lorem ipsum dolor sit amet', bloodgroup: 'B-' },
   { id: '3', name: 'Amrit Spakota', address: 'Kathmandu', details: 'Lorem ipsum dolor sit amet', bloodgroup: 'AB+' },
