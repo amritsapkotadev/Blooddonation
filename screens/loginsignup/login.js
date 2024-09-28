@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 
 const Login = ({ navigation }) => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -10,7 +17,7 @@ const Login = ({ navigation }) => {
       Alert.alert('Error', 'Please enter a valid 10-digit phone number');
       return;
     }
-    console.log('Login pressed');
+    navigation.navigate('Firstpage');
   };
 
   return (
