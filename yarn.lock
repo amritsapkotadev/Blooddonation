@@ -2041,6 +2041,23 @@
     serve-static "^1.13.1"
     ws "^6.2.3"
 
+"@react-native-community/cli-tools@^13.6.9":
+  version "13.6.9"
+  resolved "https://registry.npmjs.org/@react-native-community/cli-tools/-/cli-tools-13.6.9.tgz"
+  integrity sha512-OXaSjoN0mZVw3nrAwcY1PC0uMfyTd9fz7Cy06dh+EJc+h0wikABsVRzV8cIOPrVV+PPEEXE0DBrH20T2puZzgQ==
+  dependencies:
+    appdirsjs "^1.2.4"
+    chalk "^4.1.2"
+    execa "^5.0.0"
+    find-up "^5.0.0"
+    mime "^2.4.1"
+    node-fetch "^2.6.0"
+    open "^6.2.0"
+    ora "^5.4.1"
+    semver "^7.5.2"
+    shell-quote "^1.7.3"
+    sudo-prompt "^9.0.0"
+
 "@react-native-community/cli-tools@14.1.0":
   version "14.1.0"
   resolved "https://registry.npmjs.org/@react-native-community/cli-tools/-/cli-tools-14.1.0.tgz"
@@ -2115,6 +2132,24 @@
   version "2.8.1"
   resolved "https://registry.npmjs.org/@react-native-picker/picker/-/picker-2.8.1.tgz"
   integrity sha512-iFhsKQzRh/z3GlmvJWSjJJ4333FdLE/PhXxlGlYllE7sFf+UTzziVY+ajatuJ+R5zDw2AxfJV4v/3tAzUJb0/A==
+
+"@react-native-vector-icons/common@^0.0.1-alpha.20":
+  version "0.0.1-alpha.20"
+  resolved "https://registry.npmjs.org/@react-native-vector-icons/common/-/common-0.0.1-alpha.20.tgz"
+  integrity sha512-jHAsGHqzSQIr/P8XLRxZ289NlWzeMM9JZ94A+rhOfznMiCdo1b1IkdkofQsvX2bF2D59UPaj3o+FUfR+T+tR+w==
+  dependencies:
+    "@react-native-community/cli-tools" "^13.6.9"
+    picocolors "^1.0.1"
+    plist "^3.1.0"
+    prop-types "^15.8.1"
+    yargs "^17.7.2"
+
+"@react-native-vector-icons/material-icons@^0.0.1-alpha.25":
+  version "0.0.1-alpha.25"
+  resolved "https://registry.npmjs.org/@react-native-vector-icons/material-icons/-/material-icons-0.0.1-alpha.25.tgz"
+  integrity sha512-i6LdZwYK1S7pT1rdPYhQnVv6zQ9MxSIfP6mIy63ACvvhs9/GM2ixu/wX5FTbXKmKrUw6zjiicDx9fiIbVcbTPw==
+  dependencies:
+    "@react-native-vector-icons/common" "^0.0.1-alpha.20"
 
 "@react-native/assets-registry@0.75.3":
   version "0.75.3"
@@ -5870,7 +5905,7 @@ node-dir@^0.1.17:
   dependencies:
     minimatch "^3.0.2"
 
-node-fetch@^2.2.0:
+node-fetch@^2.2.0, node-fetch@^2.6.0:
   version "2.7.0"
   resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.7.0.tgz"
   integrity sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==

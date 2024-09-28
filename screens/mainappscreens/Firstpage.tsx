@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { bloodSeekersData, options } from './options';
+ import { bloodSeekersData, options } from '../mainappscreens/options';
 const Firstpage = ({navigation}) => {
   const [bloodSeekers] = useState(bloodSeekersData);
 
   const renderOption = ({ item }) => (
-    <TouchableOpacity 
+    <TouchableOpacity
       style={styles.option}
       onPress={() => {
         if (item.id === '5') {
-          navigation.navigate('postarequest');
+          console.log('Navigate to RequestBlood');
         }
       }}
     >

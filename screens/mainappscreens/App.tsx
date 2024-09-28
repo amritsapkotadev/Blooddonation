@@ -1,11 +1,10 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import Login from '../loginsignup/login';
-import Signup from '../loginsignup/signup';
-import App from '../firstpage';
-import Donate from '../postarequest'; // Import the PostARequest component
-import Firstpage from './Firstpage';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Login from '../loginsignup/login.js';
+import Signup from '../loginsignup/signup.tsx';
+import Firstpage from './Firstpage.tsx';
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -15,22 +14,17 @@ export default function App() {
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{headerShown: false}} //mathi aaune header hide garnes
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Signup"
           component={Signup}
-          options={{headerShown: false}} //mathi aaune header hide garne
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="firstpage"
+          name="Firstpage"
           component={Firstpage}
-          options={{headerShown: false}} //mathi aaune header hide garne
-        />
-        <Stack.Screen
-          name="Donate"
-          component={Donate}
-          options={{headerShown: false}} //mathi aaune header hide garne
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
