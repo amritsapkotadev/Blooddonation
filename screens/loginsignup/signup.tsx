@@ -7,36 +7,22 @@ import {
   View,
 } from 'react-native';
 import React, { useState } from 'react';
-import auth from '@react-native-firebase/auth';
-import { isValidPhoneNumber } from 'libphonenumber-js'; // Add this library
-
+ import { NavigationContainer } from '@react-navigation/native';
 const Signup = ({ navigation }) => {
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
 
-  const signup = async () => {
-    if (!isValidPhoneNumber(phoneNumber, 'NP')) {
-      Alert.alert('Invalid phone number format.');
-      return;
-    }
-
-    try {
-      const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
-      navigation.navigate('Verification', { confirmation, fullName, password });
-    } catch (error) {
-      if (error instanceof Error) {
-        Alert.alert(error.message);
-      } else {
-        Alert.alert('An unknown error occurred.');
-      }
-    }
+  const signup = () => {
+    // Add your signup logic here
+    Alert.alert('Signup button pressed');
   };
 
   return (
     <View style={styles.signuppage}>
       <Text style={styles.heading}>Create an account✨</Text>
       <Text style={styles.subheading}>Welcome, please add your details</Text>
+
       <View style={styles.formContainer}>
         <Text style={styles.label}>Full Name</Text>
         <TextInput
@@ -70,7 +56,9 @@ const Signup = ({ navigation }) => {
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.loginLink} onPress={() => navigation.navigate('Login')}>
+      <TouchableOpacity
+        style={styles.loginLink}
+        onPress={() => navigation.navigate('Login')}>
         <Text style={styles.loginText}>Already have an account? Login</Text>
       </TouchableOpacity>
     </View>
@@ -84,7 +72,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'black',
-    color: 'white',
   },
   heading: {
     fontSize: 30,
