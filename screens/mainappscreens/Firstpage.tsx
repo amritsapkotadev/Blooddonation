@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';
 import { bloodSeekersData, options } from './options';
-import Donate from './PostaRequest';
-
 const Firstpage = ({ navigation }) => {
   const [bloodSeekers] = useState(bloodSeekersData);
 
-  const renderOption = ({ item }) => (
+  const renderOption = ({ item }: { item: { id: string; label: string } }) => (
     <TouchableOpacity
       style={styles.option}
       onPress={() => {
         if (item.id === '5') {
-          navigation.navigate('RequestBlood');
+          navigation.navigate('postarequest');
         }
       }}
     >
@@ -19,7 +17,7 @@ const Firstpage = ({ navigation }) => {
     </TouchableOpacity>
   );
 
-  const renderBloodSeeker = ({ item }) => (
+  const renderBloodSeeker = ({ item }: { item: { id: string; name: string; details: string; bloodgroup: string; address: string } }) => (
     <View style={styles.requestCard}>
       <Text onPress={() => navigation.navigate('PostaRequest')} style={styles.requestName}>
         {item.name}
@@ -61,7 +59,7 @@ const Firstpage = ({ navigation }) => {
       </View>
 
       <View style={styles.navContainer}>
-        {['Home', 'Notification', 'Profile', 'Setting'].map((label, index) => (
+        {['Home', 'Notification', 'Profile', <Text key="Setting">Setting</Text>].map((label, index) => (
           <TouchableOpacity key={index} style={styles.navButton}>
             <Text style={styles.navText}>{label}</Text>
           </TouchableOpacity>
@@ -199,4 +197,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Firstpage;
+export default Firstpage; 
