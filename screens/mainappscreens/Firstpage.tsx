@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';
- import { bloodSeekersData, options } from './options';
-const Firstpage = ({navigation}) => {
+import { bloodSeekersData, options } from './options';
+import Donate from './PostaRequest';
+
+const Firstpage = ({ navigation }) => {
   const [bloodSeekers] = useState(bloodSeekersData);
 
   const renderOption = ({ item }) => (
@@ -9,7 +11,7 @@ const Firstpage = ({navigation}) => {
       style={styles.option}
       onPress={() => {
         if (item.id === '5') {
-          console.log('Navigate to RequestBlood');
+          navigation.navigate('RequestBlood');
         }
       }}
     >
@@ -19,7 +21,9 @@ const Firstpage = ({navigation}) => {
 
   const renderBloodSeeker = ({ item }) => (
     <View style={styles.requestCard}>
-      <Text style={styles.requestName}>{item.name}</Text>
+      <Text onPress={() => navigation.navigate('PostaRequest')} style={styles.requestName}>
+        {item.name}
+      </Text>
       <Text style={styles.requestDetails}>{item.details}</Text>
       <Text style={styles.bloodgroup}>{item.bloodgroup}</Text>
       <View style={styles.Addressandbutton}>
@@ -67,32 +71,36 @@ const Firstpage = ({navigation}) => {
   );
 };
 
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: 'white',
+    backgroundColor: '#f9f9f9',
   },
   optionsContainer: {
     marginBottom: 20,
-    marginTop: 220,
+    marginTop: 30,
   },
   option: {
     flex: 1,
     margin: 5,
     padding: 15,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: '#e0e0e0',
-    borderRadius: 10,
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
   optionText: {
     fontSize: 16,
-    color: 'black',
+    color: '#333',
+    fontWeight: '500',
   },
   seekerContainer: {
     flex: 1,
@@ -102,82 +110,92 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 15,
+  },
+  seekerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#333',
   },
   seeAllSeekerList: {
     textAlign: 'right',
   },
   seeAllText: {
-    color: 'red',
+    color: '#007bff',
     fontSize: 16,
-  },
-  seekerTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'black',
+    fontWeight: '500',
   },
   requestCard: {
-    backgroundColor: '#f8f8f8',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 10,
+    backgroundColor: '#ffffff',
+    padding: 20,
+    borderRadius: 12,
+    marginBottom: 15,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 1.5,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
     elevation: 3,
-    height: 160,
-    marginTop: 20,
   },
   requestName: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'black',
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#444',
   },
   requestDetails: {
     fontSize: 16,
-    color: 'gray',
+    color: '#777',
+    marginVertical: 8,
   },
   requestAddress: {
-    fontSize: 16,
-    color: 'blue',
+    fontSize: 14,
+    color: '#007bff',
     marginTop: 5,
   },
   bloodgroup: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
-    color: 'red',
+    color: '#e63946',
     marginTop: 5,
   },
   donate: {
-    backgroundColor: 'red',
-    padding: 10,
-    borderRadius: 10,
-    marginTop: 10,
+    backgroundColor: '#e63946',
+    padding: 12,
+    borderRadius: 8,
     alignItems: 'center',
+    marginTop: 10,
     width: 100,
   },
   donateText: {
     color: 'white',
-    fontWeight: 'bold',
+    fontWeight: '600',
+    fontSize: 16,
   },
   navContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    padding: 10,
-    backgroundColor: 'white',
+    paddingVertical: 15,
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
   },
   navButton: {
-    flex: 1,
-    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
   },
   navText: {
-    fontSize: 14,
-    color: 'black',
+    fontSize: 16,
+    color: '#333',
+    fontWeight: '500',
   },
   Addressandbutton: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 10,
   },
 });
 
