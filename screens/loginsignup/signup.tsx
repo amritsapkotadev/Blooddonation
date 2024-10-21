@@ -6,16 +6,39 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useState } from 'react';
- import { NavigationContainer } from '@react-navigation/native';
-const Signup = ({ navigation }) => {
+import React, {useState} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+const Signup = ({navigation}) => {
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
 
-  const signup = () => {
-    // Add your signup logic here
-    Alert.alert('Signup button pressed');
+  const signup = async () => {
+    try {
+      const response = await fetch('http://192.168.18.1:3000/signup', {
+        // Change to your computer's IP address
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: fullName,
+          phonenumber: phoneNumber,
+          password: password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        Alert.alert('Signup successful', data.message);
+        navigation.navigate('Login'); // Navigate to the login screen after signup
+      } else {
+        Alert.alert('Signup failed', data.message);
+      }
+    } catch (error) {
+      Alert.alert('Error', 'Something went wrong, please try again.');
+    }
   };
 
   return (
