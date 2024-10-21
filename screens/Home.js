@@ -35,7 +35,7 @@ const Home = ({navigation}) => {
       </TouchableOpacity>
     </View>
   );
-}; 
+};
 
 
 export default AppNavigator;

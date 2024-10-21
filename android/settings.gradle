@@ -1,6 +1,32 @@
-pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
-plugins { id("com.facebook.react.settings") }
-extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
-rootProject.name = 'Blooddonation'
+// This must be at the very top of the file
+pluginManagement {
+    includeBuild("../node_modules/@react-native/gradle-plugin")
+}
+
+// Next, you can define the plugins block
+plugins {
+    id("com.facebook.react.settings")
+}
+
+// Configuration for the React Native project
+extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
+    ex.autolinkLibrariesFromCommand()
+}
+
+rootProject.name = 'BLOODDONATION'
+
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
+
+include ':react-native-community_masked-view'
+include ':react-native-community_slider'
+include ':react-native-firebase_app'
+include ':react-native-firebase_auth'
+include ':react-native-picker_picker'
+include ':react-native-gesture-handler'
+include ':react-native-reanimated'
+include ':react-native-safe-area-context'
+include ':react-native-screens'
+include ':react-native-vector-icons'
+
+// Add any other modules you might have
