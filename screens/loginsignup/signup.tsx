@@ -7,8 +7,16 @@ import {
   View,
 } from 'react-native';
 import React, {useState} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-const Signup = ({navigation}) => {
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../types'; // Adjust the import path according to your project structure
+
+type SignupScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Signup'>;
+
+type Props = {
+  navigation: SignupScreenNavigationProp;
+};
+
+const Signup = ({navigation}: Props) => {
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
