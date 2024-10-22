@@ -1,20 +1,27 @@
-const express=require('express');
+const express = require('express');
+const cors = require('cors'); // Import the cors package
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const signupHandler = require('./handler/signuphandler');
-const App = express();
-App.use(bodyParser.json());
+const signupHandler = require('./path/to/signupHandler'); // Adjust the path accordingly
 
-//connect to database mongoose
-mongoose.connect("mongodb://localhost:27017/Signup")
-.then(() => {
-  console.log('Connected to the database');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware
+app.use(cors()); // Use CORS middleware here
+app.use(express.json()); // To parse JSON bodies
+
+// Routes
+app.post('/signup', signupHandler);
+
+// Connect to MongoDB (ensure you have your connection string)
+mongoose.connect('your_mongo_connection_string', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 })
-.catch((err) => {
-  console.log('Error connecting to the database', err);
-});
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error('MongoDB connection error:', err));
 
-App.post('/signup', signupHandler);
-App.listen(3000, () => {
-  console.log('Server is running on port 3000');
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });

@@ -1,17 +1,21 @@
 const mongoose = require('mongoose');
-const userschema = new mongoose.Schema({
+
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
   },
   phonenumber: {
-    type: Number,
+    type: String,  // Changed to String to preserve all characters in phone numbers
     required: true,
+    unique: true,  // Ensure that phone numbers are unique
   },
   password: {
     type: String,
     required: true,
   },
 });
-const user = mongoose.model('user', userschema);
-module.exports = user;
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
