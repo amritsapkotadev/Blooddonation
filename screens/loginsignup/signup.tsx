@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../types'; // Adjust the import path according to your project structure
 
@@ -16,15 +16,20 @@ type Props = {
   navigation: SignupScreenNavigationProp;
 };
 
-const Signup = ({navigation}: Props) => {
+const Signup = ({ navigation }: Props) => {
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
 
   const signup = async () => {
+    console.log('Attempting signup with:', {
+      name: fullName,
+      phonenumber: phoneNumber,
+      password: password,
+    });
+
     try {
       const response = await fetch('http://192.168.18.1:3000/signup', {
-        // Change to your computer's IP address
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,15 +41,17 @@ const Signup = ({navigation}: Props) => {
         }),
       });
 
-      const data = await response.json();
+      const data = await response.jsson();
+      console.log('Response from server:', data);
 
       if (response.ok) {
         Alert.alert('Signup successful', data.message);
         navigation.navigate('Login'); // Navigate to the login screen after signup
       } else {
-        Alert.alert('Signup failed', data.message);
+        Alert.alert('Signup failed', data.message || 'Unknown error occurred');
       }
     } catch (error) {
+      console.error('Network error:', error); // Log the error
       Alert.alert('Error', 'Something went wrong, please try again.');
     }
   };
