@@ -1,37 +1,41 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Login from '../loginsignup/login.js';
-import Signup from '../loginsignup/signup.tsx';
-import Firstpage from './Firstpage.js';
-import Donate from './PostaRequest.js';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Firstpage from './Firstpage';
+import PostaRequest from './PostaRequest';
 
-const Stack = createStackNavigator();
+export type RootStackParamList = {
+  Firstpage: undefined;
+  PostaRequest: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator();
+
+function HomeScreen() {
+  return <Firstpage />;
+}
+
+function SettingsScreen() {
+  return <Text>Settings</Text>;
+}
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
+  );
+}
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Signup"
-          component={Signup}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Firstpage"
-          component={Firstpage}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="postarequest"
-          component={Donate}
-          options={{ headerShown: false }}
-        />
+      <Stack.Navigator initialRouteName="Firstpage">
+        <Stack.Screen name="Firstpage" component={MyTabs} />
+        <Stack.Screen name="PostaRequest" component={PostaRequest} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';
 import { bloodSeekersData, options } from './options';
-const Firstpage = ({ navigation }) => {
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from './App';
+
+const Firstpage = ({ navigation }: NativeStackScreenProps<RootStackParamList, 'Firstpage'>) => {
   const [bloodSeekers] = useState(bloodSeekersData);
 
   const renderOption = ({ item }: { item: { id: string; label: string } }) => (
@@ -9,7 +12,7 @@ const Firstpage = ({ navigation }) => {
       style={styles.option}
       onPress={() => {
         if (item.id === '5') {
-          navigation.navigate('postarequest');
+          navigation.navigate('PostaRequest');
         }
       }}
     >
@@ -17,7 +20,11 @@ const Firstpage = ({ navigation }) => {
     </TouchableOpacity>
   );
 
-  const renderBloodSeeker = ({ item }: { item: { id: string; name: string; details: string; bloodgroup: string; address: string } }) => (
+  const renderBloodSeeker = ({
+    item,
+  }: {
+    item: { id: string; name: string; details: string; bloodgroup: string; address: string };
+  }) => (
     <View style={styles.requestCard}>
       <Text onPress={() => navigation.navigate('PostaRequest')} style={styles.requestName}>
         {item.name}
@@ -38,7 +45,7 @@ const Firstpage = ({ navigation }) => {
       <View style={styles.optionsContainer}>
         <FlatList
           data={options}
-          keyExtractor={item => item.id}
+          keyExtractor={(item) => item.id}
           renderItem={renderOption}
           numColumns={3}
         />
@@ -53,17 +60,9 @@ const Firstpage = ({ navigation }) => {
         </View>
         <FlatList
           data={bloodSeekers}
-          keyExtractor={item => item.id}
+          keyExtractor={(item) => item.id}
           renderItem={renderBloodSeeker}
         />
-      </View>
-
-      <View style={styles.navContainer}>
-        {['Home', 'Notification', 'Profile', <Text key="Setting">Setting</Text>].map((label, index) => (
-          <TouchableOpacity key={index} style={styles.navButton}>
-            <Text style={styles.navText}>{label}</Text>
-          </TouchableOpacity>
-        ))}
       </View>
     </SafeAreaView>
   );
@@ -168,27 +167,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 16,
   },
-  navContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingVertical: 15,
-    backgroundColor: '#ffffff',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 2,
-  },
-  navButton: {
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-  },
-  navText: {
-    fontSize: 16,
-    color: '#333',
-    fontWeight: '500',
-  },
   Addressandbutton: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -197,4 +175,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Firstpage; 
+export default Firstpage;

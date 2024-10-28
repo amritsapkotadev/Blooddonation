@@ -17,7 +17,12 @@ function AppNavigator() {
     </NavigationContainer>
   );
 }
-const Home = ({navigation}) => {
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from './types'; // Assuming you have a types file for your navigation params
+
+type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
+
+const Home = ({ navigation }: { navigation: HomeScreenNavigationProp }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.welcometext}>
