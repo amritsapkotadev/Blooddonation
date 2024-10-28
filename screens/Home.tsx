@@ -18,7 +18,7 @@ function AppNavigator() {
   );
 }
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from './types'; // Assuming you have a types file for your navigation params
+import { RootStackParamList } from './types'; 
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
