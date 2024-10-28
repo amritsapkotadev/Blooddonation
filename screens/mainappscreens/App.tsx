@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from '../loginsignup/login.js';
 import Signup from '../loginsignup/signup.tsx';
-import Firstpage from './Firstpage.js'; // Make sure this matches the file extension
+import Firstpage from './Firstpage.js';
 import Donate from './PostaRequest.js';
 
 const Stack = createStackNavigator();
